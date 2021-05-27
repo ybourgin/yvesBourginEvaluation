@@ -7,8 +7,6 @@ import { Statistique } from './models/statistique';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  tabStatistiques: Statistique[] = [
-    { _id: '1', titre: 'population1', valeur: 200000, appreciation: 'blabla' },
-    { _id: '2', titre: 'population2', valeur: 12000, appreciation: 'blabla' },
-  ];
+  public statistique1 = new Statistique('1', 'population1', 200000, 'blabla');
+  public statistique2 = new Statistique('2', 'population2', 12000, 'blabla');
 }
