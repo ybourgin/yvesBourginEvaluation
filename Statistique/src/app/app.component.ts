@@ -17,6 +17,7 @@ export class AppComponent {
   //   'blablablabla'
   // );
   public tabStatistique: Statistique[] = [];
+  StatistiqueAPIService: any;
 
   constructor(private apiStatistique: StatistiqueAPIService) {
     // this.tabStatistique.push(this.statistique1, this.statistique2);
@@ -29,5 +30,22 @@ export class AppComponent {
         this.tabStatistique = data;
       });
     }
+  }
+  supprimerStatistique(uneStatistique: Statistique) {
+    console.log('supprimer ' + uneStatistique.titre);
+    this.apiStatistique
+      .deleteStatistique(uneStatistique._id)
+      .then((statut: string) => {
+        if (statut === 'OK') {
+          let indexStatistique = this.tabStatistique.findIndex(
+            (c) => c._id === uneStatistique._id
+          );
+          if (indexStatistique != -1) {
+            this.tabStatistique.splice(indexStatistique, 1);
+          }
+        } else {
+          alert('Problème lors de la suppression');
+        }
+      });
   }
 }

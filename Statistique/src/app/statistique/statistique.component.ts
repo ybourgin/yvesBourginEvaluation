@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Statistique } from '../models/statistique';
 
 @Component({
@@ -8,7 +8,16 @@ import { Statistique } from '../models/statistique';
 })
 export class StatistiqueComponent implements OnInit {
   @Input() public uneStatistique!: Statistique;
-  constructor() {}
+
+  @Output() public demandeSupp: EventEmitter<void>;
+  constructor() {
+    this.demandeSupp = new EventEmitter();
+  }
 
   ngOnInit(): void {}
+
+  clicBouton() {
+    console.log('click');
+    this.demandeSupp.emit();
+  }
 }

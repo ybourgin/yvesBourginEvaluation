@@ -22,4 +22,15 @@ export class StatistiqueAPIService {
         return this.tabStatistique;
       });
   }
+  deleteStatistique(idStatistique: string): Promise<'OK' | 'KO'> {
+    return this.http
+      .delete('https://stats.naminilamy.fr/' + idStatistique)
+      .toPromise()
+      .then(
+        () => 'OK',
+        () => {
+          return 'KO';
+        }
+      );
+  }
 }

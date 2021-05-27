@@ -1,6 +1,7 @@
 <app-statistique
   *ngFor="let s of tabStatistique"
   [uneStatistique]="s"
+  (demandeSupp)="supprimerStatistique(s)"
 ></app-statistique>
 
 <router-outlet></router-outlet>
