@@ -1,3 +1,6 @@
-<app-statistique [uneStatistique]="statistique1"></app-statistique>
-<app-statistique [uneStatistique]="statistique2"></app-statistique>
+<app-statistique
+  *ngFor="let s of tabStatistique"
+  [uneStatistique]="s"
+></app-statistique>
+
 <router-outlet></router-outlet>
